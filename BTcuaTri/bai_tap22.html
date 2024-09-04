@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhúng Nội Dung và Canvas</title>
+    <style>
+        /* Đặt kiểu CSS để cải thiện bố cục */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            margin-bottom: 40px;
+        }
+        iframe, video, audio, canvas {
+            border: 1px solid #ccc;
+            display: block;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Phần tử iframe -->
+    <div class="container">
+        <h1>Minh họa một khung hiển thị độc lập</h1>
+        <iframe src="danh-sach.html" width="400" height="250">
+            Trình duyệt của bạn không hỗ trợ iframe. Xem nội dung của Danh sách tại đây <a href="danh-sach.html">Danh sách</a>
+        </iframe>
+    </div>
+
+    <!-- Phần tử video -->
+    <div class="container">
+        <h2>Nhúng Video</h2>
+        <video src="canonind.mp4" width="640" height="480" poster="canonind.jpg" controls autoplay>
+            Trình duyệt của bạn không hỗ trợ HTML5 video. Vui lòng bấm vào đây để xem <a href="canonind.mp4">MP4 video</a>
+        </video>
+    </div>
+
+    <!-- Nhúng video với nhiều định dạng khác nhau -->
+    <div class="container">
+        <h2>Nhúng Video với Định dạng Khác Nhau</h2>
+        <video id="video" controls poster="img/poster.jpg">
+            <source src="clip.webm" type="video/webm">
+            <source src="clip.mp4" type="video/mp4">
+            <source src="clip.ogg" type="video/ogg">
+            <a href="clip.mp4">Download the MP4 of the clip.</a>
+        </video>
+    </div>
+
+    <!-- Phần tử âm thanh -->
+    <div class="container">
+        <h2>Nhúng Âm Thanh</h2>
+        <audio controls>
+            <source src="horse.ogg" type="audio/ogg">
+            <source src="horse.mp3" type="audio/mpeg">
+            Trình duyệt không hỗ trợ chức năng này.
+        </audio>
+    </div>
+
+    <!-- Phần tử canvas -->
+    <div class="container">
+        <h2>Nhúng Canvas và JavaScript</h2>
+        <canvas width="600" height="400" id="canvas-dau-tien">
+            Trình duyệt không hỗ trợ Canvas. Bạn nên sử dụng trình duyệt Chrome, Firefox hoặc MS Edge.
+        </canvas>
+        <script type="text/javascript">
+            window.addEventListener('load', eventWindowLoaded, false);
+
+            function eventWindowLoaded() {
+                canvasApp();
+            }
+
+            function canvasApp() {
+                var theCanvas = document.getElementById('canvas-dau-tien');
+                var my_canvas = theCanvas.getContext('2d');
+
+                // Draw border around canvas
+                my_canvas.strokeRect(0, 0, 200, 225);
+
+                // Draw face
+                my_canvas.beginPath();
+                my_canvas.arc(100, 100, 75, (Math.PI / 180) * 0, (Math.PI / 180) * 360, false);
+                my_canvas.strokeStyle = "black"; // circle outline is black
+                my_canvas.lineWidth = 3; // outline is three pixels wide
+                my_canvas.fillStyle = "yellow"; // fill circle with yellow
+                my_canvas.stroke(); // draw circle
+                my_canvas.fill(); // fill in circle
+                my_canvas.closePath();
+
+                // Draw left eye
+                my_canvas.fillStyle = "black"; // switch to black for the fill
+                my_canvas.beginPath();
+                my_canvas.arc(65, 70, 10, (Math.PI / 180) * 0, (Math.PI / 180) * 360, false);
+                my_canvas.stroke(); // draw circle
+                my_canvas.fill(); // fill in circle
+                my_canvas.closePath();
+
+                // Draw right eye
+                my_canvas.beginPath();
+                my_canvas.arc(135, 70, 10, (Math.PI / 180) * 0, (Math.PI / 180) * 360, false);
+                my_canvas.stroke(); // draw circle
+                my_canvas.fill(); // fill in circle
+                my_canvas.closePath();
+
+                // Draw smile
+                my_canvas.lineWidth = 6; // switch to six pixels wide for outline
+                my_canvas.beginPath();
+                my_canvas.arc(99, 120, 35, (Math.PI / 180) * 0, (Math.PI / 180) * -180, false);
+                my_canvas.stroke(); // draw semi-circle
+                my_canvas.closePath();
+
+                // Add text
+                my_canvas.fillStyle = "black"; // switch to black for text fill
+                my_canvas.font = '20px _sans'; // use 20 pixel sans-serif font
+                my_canvas.fillText("Xin chao canvas!", 45, 200); // write text
+            }
+        </script>
+    </div>
+
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhúng Bản Đồ Google Maps</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .map-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        iframe {
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Nhúng Bản Đồ Google Maps</h1>
+    <div class="map-container">
+        <!-- Dán mã HTML iframe của bản đồ Google Maps vào đây -->
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.364829071575!2d108.5377168150721!3d11.94051019109868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317000b1d5f9d1d3%3A0x6c32d89c58b7f7f8!2zU8O0YyBjjIHRpIGEgR8O0Y2ggY2FkaWZhcnk!5e0!3m2!1sen!2s!4v1693787274895!5m2!1sen!2s" 
+            width="600" 
+            height="450" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </div>
+</body>
+</html>
+
